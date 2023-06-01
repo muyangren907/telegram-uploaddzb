@@ -44,8 +44,15 @@ To **install telegram-upload**, run this command in your terminal:
     $ telegram-upload 2023_05_26_16_45_33.pp --to -1001569385968 --vif True --dzffn jjk -d --nobar True
 
 vif 参数为 True 则忽略文件名后缀 强制以视频上传
+
+
 dzffn 参数指定 ffmpeg 的定制化名字 
+
+
 nobar 参数关闭进度条显示
+
+
+
 .. code-block:: console
 
     $ sudo pip3 install -U telegram-upload
