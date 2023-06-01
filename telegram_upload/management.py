@@ -3,7 +3,6 @@
 """Console script for telegram-upload."""
 
 import click
-
 from telegram_upload.client import Client
 from telegram_upload.config import default_config, CONFIG_FILE
 from telegram_upload.exceptions import catch
@@ -79,6 +78,8 @@ class MutuallyExclusiveOption(click.Option):
                                          'By default "False".')
 @click.option('--nobar', default=False, help='是否禁用进度条显示 默认为False'
                                          'By default "False".')
+@click.option('--dzffn', default='ffmpeg', help='定制ffmpeg名字 默认为ffmpeg'
+                                         'By default "False".')
 @click.option('--config', default=None, help='Configuration file to use. By default "{}".'.format(CONFIG_FILE))
 @click.option('-d', '--delete-on-success', is_flag=True, help='Delete local file after successful upload.')
 @click.option('--print-file-id', is_flag=True, help='Print the id of the uploaded file after the upload.')
@@ -103,13 +104,12 @@ class MutuallyExclusiveOption(click.Option):
                    'for socks5 and mtproxy://secret@1.2.3.4:443 for mtproxy.')
 @click.option('-a', '--album', is_flag=True,
               help='Send video or photos as an album.')
-def upload(files, to, vif, nobar, config, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption,
+def upload(files, to, vif, nobar, dzffn, config, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption,
            no_thumbnail, thumbnail_file, proxy, album):
     """Upload one or more files to Telegram using your personal account.
     The maximum file size is 2 GiB and by default they will be saved in
     your saved messages.
     """
-
     client = Client(config or default_config(), proxy=proxy)
     client.start()
     files = filter(lambda file: is_valid_file(file, lambda message: click.echo(message, err=True)), files)
@@ -124,7 +124,9 @@ def upload(files, to, vif, nobar, config, delete_on_success, print_file_id, forc
     else:
         thumbnail = None
     files_cls = LARGE_FILE_MODES[large_files]
-    files = files_cls(files, caption=caption, thumbnail=thumbnail, force_file=force_file)
+    files = files_cls(files, caption=caption, thumbnail=thumbnail, force_file=force_file, dzffn=dzffn)
+    # print(type(files))
+    # print(files)
     if large_files == 'fail':
         # Validate now
         files = list(files)
@@ -162,6 +164,7 @@ def download(from_, config, delete_on_success, proxy, interactive):
     else:
         messages = client.find_files(from_)
     client.download_files(from_, messages, delete_on_success)
+
 
 upload_cli = catch(upload)
 download_cli = catch(download)

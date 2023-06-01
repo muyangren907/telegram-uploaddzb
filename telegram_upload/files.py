@@ -66,15 +66,16 @@ def get_file_attributes(file):
     return attrs
 
 
-def get_file_thumb(file):
+def get_file_thumb(dzffn, file):
     if get_file_mime(file) == 'video':
-        return get_video_thumb(file)
+        return get_video_thumb(dzffn, file)
 
 
 class FilesBase:
-    def __init__(self, files, thumbnail: Union[str, bool, None] = None, force_file: bool = False,
+    def __init__(self, files, dzffn: str = 'ffmpeg', thumbnail: Union[str, bool, None] = None, force_file: bool = False,
                  caption: Union[str, None] = None):
         self._iterator = None
+        self.dzffn = dzffn
         self.files = files
         self.thumbnail = thumbnail
         self.force_file = force_file
@@ -122,7 +123,7 @@ class LargeFilesBase(FilesBase):
                 yield self.process_normal_file(file)
 
     def process_normal_file(self, file: str) -> 'File':
-        return File(file, force_file=self.force_file, thumbnail=self.thumbnail, caption=self.caption)
+        return File(file, dzffn=self.dzffn, force_file=self.force_file, thumbnail=self.thumbnail, caption=self.caption)
 
     def process_large_file(self, file):
         raise NotImplementedError
@@ -135,11 +136,11 @@ class NoLargeFiles(LargeFilesBase):
 
 class File(FileIO):
     force_file = False
-    # print("进入file")
-    def __init__(self, path: str, force_file: Union[bool, None] = None, thumbnail: Union[str, bool, None] = None,
+    def __init__(self, path: str, dzffn: str, force_file: Union[bool, None] = None, thumbnail: Union[str, bool, None] = None,
                  caption: Union[str, None] = None):
         super().__init__(path)
         self.path = path
+        self.dzffn = dzffn
         self.force_file = self.force_file if force_file is None else force_file
         self._thumbnail = thumbnail
         self._caption = caption
@@ -169,7 +170,7 @@ class File(FileIO):
         thumb = None
         if self._thumbnail is None and not self.force_file:
             try:
-                thumb = get_file_thumb(self.path)
+                thumb = get_file_thumb(self.dzffn, self.path)
             except ThumbError as e:
                 click.echo('{}'.format(e), err=True)
         elif self.is_custom_thumbnail:

@@ -183,7 +183,6 @@ class Client(TelegramClient):
         for file in files:
             has_files = True
             progress, bar = get_progress_bar('Uploading', file.file_name, file.file_size)
-
             thumb = file.get_thumbnail()
             try:
                 try:
@@ -197,11 +196,11 @@ class Client(TelegramClient):
             finally:
                 if thumb and file.is_custom_thumbnail:
                     os.remove(thumb)
-            if print_file_id:
-                click.echo('Uploaded successfully "{}" (file_id {})'.format(file.file_name,
-                                                                            pack_bot_file_id(message.media)))
+            # if print_file_id:
+                # click.echo('Uploaded successfully "{}" (file_id {})'.format(file.file_name,
+                #                                                             pack_bot_file_id(message.media)))
             if delete_on_success:
-                click.echo('Deleting "{}"'.format(file))
+                # click.echo('Deleting "{}"'.format(file))
                 os.remove(file.path)
             self.forward_to(message, forward)
         if not has_files:
