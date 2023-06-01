@@ -75,6 +75,10 @@ class MutuallyExclusiveOption(click.Option):
 @click.argument('files', nargs=-1)
 @click.option('--to', default='me', help='Phone number, username, invite link or "me" (saved messages). '
                                          'By default "me".')
+@click.option('--vif', default=False, help='上传文件是否为视频文件 默认为False 可以上传任意后缀的视频文件 '
+                                         'By default "False".')
+@click.option('--nobar', default=False, help='是否禁用进度条显示 默认为False'
+                                         'By default "False".')
 @click.option('--config', default=None, help='Configuration file to use. By default "{}".'.format(CONFIG_FILE))
 @click.option('-d', '--delete-on-success', is_flag=True, help='Delete local file after successful upload.')
 @click.option('--print-file-id', is_flag=True, help='Print the id of the uploaded file after the upload.')
@@ -99,12 +103,13 @@ class MutuallyExclusiveOption(click.Option):
                    'for socks5 and mtproxy://secret@1.2.3.4:443 for mtproxy.')
 @click.option('-a', '--album', is_flag=True,
               help='Send video or photos as an album.')
-def upload(files, to, config, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption,
+def upload(files, to, vif, nobar, config, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption,
            no_thumbnail, thumbnail_file, proxy, album):
     """Upload one or more files to Telegram using your personal account.
     The maximum file size is 2 GiB and by default they will be saved in
     your saved messages.
     """
+
     client = Client(config or default_config(), proxy=proxy)
     client.start()
     files = filter(lambda file: is_valid_file(file, lambda message: click.echo(message, err=True)), files)
@@ -124,9 +129,9 @@ def upload(files, to, config, delete_on_success, print_file_id, force_file, forw
         # Validate now
         files = list(files)
     if album:
-        client.send_files_as_album(to, files, delete_on_success, print_file_id, forward)
+        client.send_files_as_album(to, vif, nobar, files, delete_on_success, print_file_id, forward)
     else:
-        client.send_files(to, files, delete_on_success, print_file_id, forward)
+        client.send_files(to, vif, nobar, files, delete_on_success, print_file_id, forward)
 
 
 @click.command()
@@ -157,7 +162,6 @@ def download(from_, config, delete_on_success, proxy, interactive):
     else:
         messages = client.find_files(from_)
     client.download_files(from_, messages, delete_on_success)
-
 
 upload_cli = catch(upload)
 download_cli = catch(download)

@@ -33,7 +33,11 @@ def is_valid_file(file, error_logger=None):
 
 
 def get_file_mime(file):
-    return (mimetypes.guess_type(file)[0] or ('')).split('/')[0]
+    tp = (mimetypes.guess_type(file)[0] or ('')).split('/')[0]
+    if tp=='' or tp is None:
+        tp = 'video'
+    # print('{} {}'.format(type(tp),tp))
+    return tp
 
 
 def get_file_attributes(file):
@@ -43,6 +47,7 @@ def get_file_attributes(file):
         metadata = video_metadata(file)
         video_meta = metadata
         meta_groups = None
+        # print(metadata)
         if hasattr(metadata, '_MultipleMetadata__groups'):
             # Is mkv
             meta_groups = metadata._MultipleMetadata__groups
@@ -57,6 +62,7 @@ def get_file_attributes(file):
                 False,
                 supports_streaming,
             ))
+    # print(attrs)
     return attrs
 
 
@@ -129,7 +135,7 @@ class NoLargeFiles(LargeFilesBase):
 
 class File(FileIO):
     force_file = False
-
+    # print("进入file")
     def __init__(self, path: str, force_file: Union[bool, None] = None, thumbnail: Union[str, bool, None] = None,
                  caption: Union[str, None] = None):
         super().__init__(path)
@@ -137,6 +143,7 @@ class File(FileIO):
         self.force_file = self.force_file if force_file is None else force_file
         self._thumbnail = thumbnail
         self._caption = caption
+        # print(self._caption)
 
     @property
     def file_name(self):

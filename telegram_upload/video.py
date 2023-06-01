@@ -19,15 +19,16 @@ def video_metadata(file):
 
 
 def call_ffmpeg(args):
+    dzffn = 'ffmpeg'
     try:
-        return subprocess.Popen([get_ffmpeg_command()] + args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return subprocess.Popen([get_ffmpeg_command(dzffn)] + args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     except FileNotFoundError:
-        raise ThumbVideoError('ffmpeg command is not available. Thumbnails for videos are not available!')
+        raise ThumbVideoError('{} command is not available. Thumbnails for videos are not available!'.format(dzffn))
 
 
-def get_ffmpeg_command():
+def get_ffmpeg_command(dzffn):
     return os.environ.get('FFMPEG_COMMAND',
-                          'ffmpeg.exe' if platform.system() == 'Windows' else 'ffmpeg')
+                          '{}.exe'.format(dzffn) if platform.system() == 'Windows' else '{}'.format(dzffn))
 
 
 def get_video_size(file):
