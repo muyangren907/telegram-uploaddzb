@@ -171,7 +171,7 @@ class Client(TelegramClient):
         )
 
     def send_files(self, entity, files: Iterable[File], delete_on_success=False, print_file_id=False,
-                   forward=(), send_as_media: bool = True):
+                   forward=(), send_as_media: bool = False):
         has_files = False
         messages = []
         for file in files:
