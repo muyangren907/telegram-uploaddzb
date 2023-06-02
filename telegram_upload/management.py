@@ -81,6 +81,7 @@ class MutuallyExclusiveOption(click.Option):
 @click.option('--dzffn', default='ffmpeg', help='定制ffmpeg名字 默认为ffmpeg'
                                          'By default "False".')
 @click.option('--config', default=None, help='Configuration file to use. By default "{}".'.format(CONFIG_FILE))
+@click.option('--c1', default=None, help='Configuration file to use. By default "{}".'.format(CONFIG_FILE))
 @click.option('-d', '--delete-on-success', is_flag=True, help='Delete local file after successful upload.')
 @click.option('--print-file-id', is_flag=True, help='Print the id of the uploaded file after the upload.')
 @click.option('--force-file', is_flag=True, help='Force send as a file. The filename will be preserved '
@@ -94,6 +95,7 @@ class MutuallyExclusiveOption(click.Option):
               help='Defines how to process large files unsupported for Telegram. By default large files are not '
                    'accepted and will raise an error.')
 @click.option('--caption', type=str, help='Change file description. By default the file name.')
+@click.option('--c2', type=str, default=None, help='Change file description. By default the file name.')
 @click.option('--no-thumbnail', is_flag=True, cls=MutuallyExclusiveOption, mutually_exclusive=["thumbnail_file"],
               help='Disable thumbnail generation. For some known file formats, Telegram may still generate a '
                    'thumbnail or show a preview.')
@@ -104,12 +106,16 @@ class MutuallyExclusiveOption(click.Option):
                    'for socks5 and mtproxy://secret@1.2.3.4:443 for mtproxy.')
 @click.option('-a', '--album', is_flag=True,
               help='Send video or photos as an album.')
-def upload(files, to, vif, nobar, dzffn, config, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption,
+def upload(files, to, vif, nobar, dzffn, config, c1, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption, c2,
            no_thumbnail, thumbnail_file, proxy, album):
     """Upload one or more files to Telegram using your personal account.
     The maximum file size is 2 GiB and by default they will be saved in
     your saved messages.
     """
+    if c1 is not None:
+        config = c1
+    if c2 is not None:
+        caption = c2
     client = Client(config or default_config(), proxy=proxy)
     client.start()
     files = filter(lambda file: is_valid_file(file, lambda message: click.echo(message, err=True)), files)
