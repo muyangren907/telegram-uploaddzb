@@ -74,6 +74,8 @@ class MutuallyExclusiveOption(click.Option):
 @click.argument('files', nargs=-1)
 @click.option('--to', default='me', help='Phone number, username, invite link or "me" (saved messages). '
                                          'By default "me".')
+@click.option('--quchu', default='me', help='Phone number, username, invite link or "me" (saved messages). '
+                                         'By default "me".')
 @click.option('--vif', default=False, help='上传文件是否为视频文件 默认为False 可以上传任意后缀的视频文件 '
                                          'By default "False".')
 @click.option('--nobar', default=False, help='是否禁用进度条显示 默认为False'
@@ -106,7 +108,7 @@ class MutuallyExclusiveOption(click.Option):
                    'for socks5 and mtproxy://secret@1.2.3.4:443 for mtproxy.')
 @click.option('-a', '--album', is_flag=True,
               help='Send video or photos as an album.')
-def upload(files, to, vif, nobar, dzffn, config, c1, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption, c2,
+def upload(files, to, quchu, vif, nobar, dzffn, config, c1, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption, c2,
            no_thumbnail, thumbnail_file, proxy, album):
     """Upload one or more files to Telegram using your personal account.
     The maximum file size is 2 GiB and by default they will be saved in
@@ -116,6 +118,8 @@ def upload(files, to, vif, nobar, dzffn, config, c1, delete_on_success, print_fi
         config = c1
     if c2 is not None:
         caption = c2
+    if quchu != 'me':
+        to = quchu
     client = Client(config or default_config(), proxy=proxy)
     client.start()
     files = filter(lambda file: is_valid_file(file, lambda message: click.echo(message, err=True)), files)
