@@ -1,14 +1,14 @@
-Welcome to telegram-upload's documentation!
+Welcome to kuangcaowangyunmin's documentation!
 ===========================================
 Telegram-upload uses your personal Telegram account to upload and download files up to 2GiB (bots are limited to 50
 MiB). Turn Telegram into your personal cloud!
 
 
-To **install** telegram-upload, run this command in your terminal:
+To **install** kuangcaowangyunmin, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install -U telegram-upload
+    $ pip install -U kuangcaowangyunmin
 
 
 Contents

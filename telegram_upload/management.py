@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Console script for telegram-upload."""
+"""Console script for kuangcaowangyunmin."""
 
 import click
 from telegram_upload.client import Client

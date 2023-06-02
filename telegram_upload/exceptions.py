@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Exceptions for telegram-upload."""
+"""Exceptions for kuangcaowangyunmin."""
 import sys
 
 import click
@@ -67,6 +67,6 @@ def catch(fn):
             prompt_config(e.config_file)
             return catch(fn)(*args, **kwargs)
         except TelegramUploadError as e:
-            sys.stderr.write('[Error] telegram-upload Exception:\n{}\n'.format(e))
+            sys.stderr.write('[Error] kuangcaowangyunmin Exception:\n{}\n'.format(e))
             exit(e.error_code)
     return wrap

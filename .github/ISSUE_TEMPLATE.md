@@ -1,4 +1,4 @@
-* telegram-upload version:
+* kuangcaowangyunmin version:
 * Python version:
 * Operating System:
 * Dependencies list (run `pip freeze`):

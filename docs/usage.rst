@@ -3,7 +3,7 @@ Usage
 #####
 
 .. click:: telegram_upload.management:upload
-   :prog: telegram-upload
+   :prog: kuangcaowangyunmin
    :show-nested:
 
 
@@ -21,13 +21,13 @@ installing ``pysocks``. To install it::
 
 To define the proxy you can use the ``--proxy`` parameter::
 
-    $ telegram-upload image.jpg --proxy mtproxy://secret@proxy.my.site:443
+    $ kuangcaowangyunmin image.jpg --proxy mtproxy://secret@proxy.my.site:443
 
 Or you can define one of these variables: ``TELEGRAM_UPLOAD_PROXY``, ``HTTPS_PROXY`` or ``HTTP_PROXY``. To define the
 environment variable from terminal::
 
     $ export HTTPS_PROXY=socks5://user:pass@proxy.my.site:1080
-    $ telegram-upload image.jpg
+    $ kuangcaowangyunmin image.jpg
 
 
 Parameter ``--proxy`` has higher priority over environment variables. The environment variable
@@ -35,7 +35,7 @@ Parameter ``--proxy`` has higher priority over environment variables. The enviro
 the OS proxy::
 
     $ export TELEGRAM_UPLOAD_PROXY=
-    $ telegram-upload image.jpg
+    $ kuangcaowangyunmin image.jpg
 
 The syntax for **mproto proxy** is::
 

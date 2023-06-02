@@ -136,13 +136,13 @@ html_theme_options = {
     'logo': 'logo.png',
     'description': 'Upload and download files to Telegram up to 2GiB',
     'github_user': 'Nekmo',
-    'github_repo': 'telegram-upload',
+    'github_repo': 'kuangcaowangyunmin',
     'github_type': 'star',
     'github_banner': True,
     'travis_button': True,
     'codecov_button': True,
     'analytics_id': 'UA-62276079-1',
-    'canonical_url': 'http://docs.nekmo.org/telegram-upload/'
+    'canonical_url': 'http://docs.nekmo.org/kuangcaowangyunmin/'
 }
 
 
