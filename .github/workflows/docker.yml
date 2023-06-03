@@ -21,7 +21,7 @@ jobs:
           uses: docker/metadata-action@v3
           with:
             images: |
-              nekmo/kuangcaowangyunmin
+              nekmo/telegram-upload
             tags: |
               type=schedule
               type=ref,event=branch

@@ -10,14 +10,14 @@ from setuptools import setup, find_packages
 
 AUTHOR = "Nekmo"
 EMAIL = 'contacto@nekmo.com'
-URL = 'https://github.com/Nekmo/kuangcaowangyunmin/'
+URL = 'https://github.com/Nekmo/telegram-upload/'
 
-PACKAGE_NAME = 'kuangcaowangyunmin'
-PACKAGE_DOWNLOAD_URL = 'https://github.com/Nekmo/kuangcaowangyunmin/archive/master.zip'
+PACKAGE_NAME = 'telegram-upload'
+PACKAGE_DOWNLOAD_URL = 'https://github.com/Nekmo/telegram-upload/archive/master.zip'
 MODULE = 'telegram_upload'
 REQUIREMENT_FILE = 'requirements.txt'
 STATUS_LEVEL = 5  # 1:Planning 2:Pre-Alpha 3:Alpha 4:Beta 5:Production/Stable 6:Mature 7:Inactive
-KEYWORDS = ['kuangcaowangyunmin', 'telegram', 'upload', 'video']
+KEYWORDS = ['telegram-upload', 'telegram', 'upload', 'video']
 LICENSE = 'MIT license'
 
 CLASSIFIERS = [  # https://github.com/github/choosealicense.com/tree/gh-pages/_licenses
@@ -138,7 +138,7 @@ setup(
 
     entry_points={
         "console_scripts": [
-            "kuangcaowangyunmin = telegram_upload.management:upload_cli",
+            "telegram-upload = telegram_upload.management:upload_cli",
             "telegram-download = telegram_upload.management:download_cli",
         ],
     },
