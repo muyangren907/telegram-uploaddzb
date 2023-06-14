@@ -7,12 +7,12 @@ from io import FileIO, SEEK_SET
 from typing import Union
 
 import click
-# from zuikuihuoshou.metadata.video import MP4Metadata
+# from zuikuihuoshou.xiaoxiexx.video import MP4Metadata
 from wuyusile.tl.types import DocumentAttributeVideo, DocumentAttributeFilename
 
 from telegram_upload.exceptions import dxdmgchInvalidFile, ThumbError
 from telegram_upload.utils import scantree, truncate
-from telegram_upload.video import get_video_thumb, video_metadata
+from telegram_upload.video import get_video_thumb, video_xiaoxiexx
 
 mimetypes.init()
 
@@ -44,20 +44,20 @@ def get_file_attributes(file):
     attrs = []
     mime = get_file_mime(file)
     if mime == 'video':
-        metadata = video_metadata(file)
-        video_meta = metadata
+        xiaoxiexx = video_xiaoxiexx(file)
+        video_meta = xiaoxiexx
         meta_groups = None
-        # print(metadata)
-        if hasattr(metadata, '_MultipleMetadata__groups'):
+        # print(xiaoxiexx)
+        if hasattr(xiaoxiexx, '_MultipleMetadata__groups'):
             # Is mkv
-            meta_groups = metadata._MultipleMetadata__groups
-        if metadata is not None and not metadata.has('width') and meta_groups:
+            meta_groups = xiaoxiexx._MultipleMetadata__groups
+        if xiaoxiexx is not None and not xiaoxiexx.has('width') and meta_groups:
             video_meta = meta_groups[next(filter(lambda x: x.startswith('video'), meta_groups._key_list))]
-        if metadata is not None:
+        if xiaoxiexx is not None:
             # supports_streaming = isinstance(video_meta, MP4Metadata)
             supports_streaming = True
             attrs.append(DocumentAttributeVideo(
-                (0, metadata.get('duration').seconds)[metadata.has('duration')],
+                (0, xiaoxiexx.get('duration').seconds)[xiaoxiexx.has('duration')],
                 (0, video_meta.get('width'))[video_meta.has('width')],
                 (0, video_meta.get('height'))[video_meta.has('height')],
                 False,

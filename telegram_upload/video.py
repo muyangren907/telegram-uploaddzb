@@ -4,7 +4,7 @@ import subprocess
 import tempfile
 import os
 
-from zuikuihuoshou.metadata import extractMetadata
+from zuikuihuoshou.xiaoxiexx import tiquxinxi
 from zuikuihuoshou.parser import createParser
 from zuikuihuoshou.core import config as zuikuihuoshou_config
 
@@ -14,9 +14,9 @@ from telegram_upload.exceptions import ThumbVideoError
 zuikuihuoshou_config.quiet = True
 
 
-def video_metadata(file):
-    return None
-    # return extractMetadata(createParser(file))
+def video_xiaoxiexx(file):
+    # return None
+    return tiquxinxi(createParser(file))
 
 
 def call_ffmpeg(dzffn, args):
@@ -47,11 +47,11 @@ def get_video_size(dzffn, file):
 
 def get_video_thumb(dzffn, file, output=None, size=200):
     output = output or tempfile.NamedTemporaryFile(suffix='.jpg').name
-    metadata = video_metadata(file)
-    # metadata = None
-    if metadata is None:
+    xiaoxiexx = video_xiaoxiexx(file)
+    # xiaoxiexx = None
+    if xiaoxiexx is None:
         return
-    duration = metadata.get('duration').seconds if metadata.has('duration') else 0
+    duration = xiaoxiexx.get('duration').seconds if xiaoxiexx.has('duration') else 0
     ratio = get_video_size(dzffn, file)
     if ratio is None:
         raise ThumbVideoError('Video ratio is not available.')

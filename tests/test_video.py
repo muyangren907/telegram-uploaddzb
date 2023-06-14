@@ -25,13 +25,13 @@ class TestGetVideoSize(unittest.TestCase):
 
 
 class TestGetVideoThumb(unittest.TestCase):
-    @patch('telegram_upload.video.video_metadata')
+    @patch('telegram_upload.video.video_xiaoxiexx')
     @patch('telegram_upload.video.get_video_size', return_value=[1920, 1080])
     @patch('telegram_upload.video.call_ffmpeg')
     def test_video_thumb(self, m1, m2, m3):
         get_video_thumb('foo')
 
-    @patch('telegram_upload.video.video_metadata')
+    @patch('telegram_upload.video.video_xiaoxiexx')
     def test_no_ratio(self, m):
         with self.assertRaises(ThumbVideoError):
             get_video_thumb('foo')
