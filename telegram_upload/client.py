@@ -8,23 +8,23 @@ from urllib.parse import urlparse
 import click
 import os
 
-from telethon.errors import ApiIdInvalidError
-from telethon.network import ConnectionTcpMTProxyRandomizedIntermediate
-from telethon.tl import types, functions
-from telethon.tl.types import Message, DocumentAttributeFilename, InputMessagesFilterDocument
-from telethon.utils import pack_bot_file_id
+from wuyusile.errors import ApiIdInvalidError
+from wuyusile.network import ConnectionTcpMTProxyRandomizedIntermediate
+from wuyusile.tl import types, functions
+from wuyusile.tl.types import Message, DocumentAttributeFilename, InputMessagesFilterDocument
+from wuyusile.utils import pack_bot_file_id
 
 from telegram_upload.config import SESSION_FILE
 from telegram_upload.exceptions import TelegramUploadDataLoss, TelegramUploadNoSpaceError, \
     TelegramProxyError, MissingFileError, InvalidApiFileError
 from telegram_upload.files import File
-from telethon.version import __version__ as telethon_version
-from telethon import TelegramClient, utils
+from wuyusile.version import __version__ as wuyusile_version
+from wuyusile import TelegramClient, utils
 
 from telegram_upload.utils import free_disk_usage, sizeof_fmt, grouper, async_to_sync
 
-if StrictVersion(telethon_version) >= StrictVersion('1.0'):
-    import telethon.sync
+if StrictVersion(wuyusile_version) >= StrictVersion('1.0'):
+    import wuyusile.sync
 
 
 ALBUM_FILES = 10

@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch, mock_open, sentinel, Mock
 
 import socks
-from telethon.tl.types import DocumentAttributeFilename
+from wuyusile.tl.types import DocumentAttributeFilename
 
 from telegram_upload.client import Client, parse_proxy_string, phone_match
 from telegram_upload.exceptions import TelegramUploadDataLoss, TelegramUploadNoSpaceError, TelegramProxyError, \

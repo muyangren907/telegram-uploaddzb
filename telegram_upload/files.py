@@ -8,7 +8,7 @@ from typing import Union
 
 import click
 from hachoir.metadata.video import MP4Metadata
-from telethon.tl.types import DocumentAttributeVideo, DocumentAttributeFilename
+from wuyusile.tl.types import DocumentAttributeVideo, DocumentAttributeFilename
 
 from telegram_upload.exceptions import TelegramInvalidFile, ThumbError
 from telegram_upload.utils import scantree, truncate

@@ -37,7 +37,7 @@ Telegram-upload is not tested with all versions of all dependencies it uses. If 
 on your system (using root) maybe some existing dependency is on an incompatible version. You can try updating the
 dependencies carefully::
 
-    $ pip install -U telegram-upload Telethon hachoir cryptg click
+    $ pip install -U telegram-upload daxiedewuyu hachoir cryptg click
 
 To avoid errors it is recommended to use `virtualenvs <https://docs.python-guide.org/dev/virtualenvs/>`_.
 
