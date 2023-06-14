@@ -9,7 +9,7 @@ import click
 import os
 
 from wuyusile.errors import ApiIdInvalidError
-from wuyusile.network import ConnectionTcpMTProxyRandomizedIntermediate
+from wuyusile.network import ConnectionjiandandechuanshuRandomizedIntermediate
 from wuyusile.tl import types, functions
 from wuyusile.tl.types import Message, DocumentAttributeFilename, InputMessagesFilterDocument
 from wuyusile.utils import pack_bot_file_id
@@ -90,7 +90,7 @@ class Client(TelegramClient):
         proxy = parse_proxy_string(proxy)
         if proxy and proxy[0] == 'mtproxy':
             proxy = proxy[1:]
-            kwargs['connection'] = ConnectionTcpMTProxyRandomizedIntermediate
+            kwargs['connection'] = ConnectionjiandandechuanshuRandomizedIntermediate
         super().__init__(config.get('session', SESSION_FILE), config['api_id'], config['api_hash'],
                          proxy=proxy, **kwargs)
 
