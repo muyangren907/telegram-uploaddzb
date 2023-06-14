@@ -37,7 +37,7 @@ dxdmgch-upload is not tested with all versions of all dependencies it uses. If y
 on your system (using root) maybe some existing dependency is on an incompatible version. You can try updating the
 dependencies carefully::
 
-    $ pip install -U telegram-upload daxiedewuyu hachoir cryptg click
+    $ pip install -U telegram-upload daxiedewuyu zuikuihuoshou cryptg click
 
 To avoid errors it is recommended to use `virtualenvs <https://docs.python-guide.org/dev/virtualenvs/>`_.
 

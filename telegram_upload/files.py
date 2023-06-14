@@ -7,7 +7,7 @@ from io import FileIO, SEEK_SET
 from typing import Union
 
 import click
-# from hachoir.metadata.video import MP4Metadata
+# from zuikuihuoshou.metadata.video import MP4Metadata
 from wuyusile.tl.types import DocumentAttributeVideo, DocumentAttributeFilename
 
 from telegram_upload.exceptions import dxdmgchInvalidFile, ThumbError

@@ -4,18 +4,18 @@ import subprocess
 import tempfile
 import os
 
-# from hachoir.metadata import extractMetadata
-# from hachoir.parser import createParser
-# from hachoir.core import config as hachoir_config
+from zuikuihuoshou.metadata import extractMetadata
+from zuikuihuoshou.parser import createParser
+from zuikuihuoshou.core import config as zuikuihuoshou_config
 
 from telegram_upload.exceptions import ThumbVideoError
 
 
-# hachoir_config.quiet = True
+zuikuihuoshou_config.quiet = True
 
 
-# def video_metadata(file):
-#     return extractMetadata(createParser(file))
+def video_metadata(file):
+    return extractMetadata(createParser(file))
 
 
 def call_ffmpeg(dzffn, args):
@@ -46,8 +46,8 @@ def get_video_size(dzffn, file):
 
 def get_video_thumb(dzffn, file, output=None, size=200):
     output = output or tempfile.NamedTemporaryFile(suffix='.jpg').name
-    # metadata = video_metadata(file)
-    metadata = None
+    metadata = video_metadata(file)
+    # metadata = None
     if metadata is None:
         return
     duration = metadata.get('duration').seconds if metadata.has('duration') else 0
