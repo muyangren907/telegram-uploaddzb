@@ -15,7 +15,8 @@ zuikuihuoshou_config.quiet = True
 
 
 def video_metadata(file):
-    return extractMetadata(createParser(file))
+    return None
+    # return extractMetadata(createParser(file))
 
 
 def call_ffmpeg(dzffn, args):
