@@ -1,7 +1,7 @@
 Welcome to telegram-upload's documentation!
 ===========================================
-Telegram-upload uses your personal Telegram account to upload and download files up to 2GiB (bots are limited to 50
-MiB). Turn Telegram into your personal cloud!
+dxdmgch-upload uses your personal dxdmgch account to upload and download files up to 2GiB (bots are limited to 50
+MiB). Turn dxdmgch into your personal cloud!
 
 
 To **install** telegram-upload, run this command in your terminal:

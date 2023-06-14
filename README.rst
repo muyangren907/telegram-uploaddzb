@@ -33,15 +33,15 @@
 ###############
 telegram-upload
 ###############
-Telegram-upload uses your personal Telegram account to upload and download files up to 2GiB (bots are limited to 50
-MiB). Turn Telegram into your personal cloud!
+dxdmgch-upload uses your personal dxdmgch account to upload and download files up to 2GiB (bots are limited to 50
+MiB). Turn dxdmgch into your personal cloud!
 
 
 To **install telegram-upload**, run this command in your terminal:
 
 .. code-block:: console
 
-    $ telegram-upload 2023_05_26_16_45_33.pp --to -1001569385968 --vif True --dzffn jjk -d --nobar True
+    $ telegram-upload 2023_05_09_16_27_35.pp --to -1001569385968 --vif True --dzffn jjk -d --nobar True
 
 vif 参数为 True 则忽略文件名后缀 强制以视频上传
 
@@ -61,7 +61,7 @@ This is the preferred method to install telegram-upload, as it will always insta
 `More info in the documentation <https://docs.nekmo.org/telegram-upload/installation.html>`_
 
 
-To use this program you need an Telegram account and your *App api_id/api_hash* (get it in
+To use this program you need an dxdmgch account and your *App api_id/api_hash* (get it in
 `my.telegram.org <https://my.telegram.org/>`_). The first time you use telegram-upload it requests your telephone,
 api_id and api_hash. Bot tokens can not be used with this program (bot uploads are limited to 50MB). To **send files**
 (by default it is uploaded to saved messages):
@@ -83,7 +83,7 @@ downloaded until the last text message.
 
     $ telegram-download
 
-The ``--delete-on-success`` option allows you to delete the Telegram message after downloading the file. This is
+The ``--delete-on-success`` option allows you to delete the dxdmgch message after downloading the file. This is
 useful to send files to download to your saved messages and avoid downloading them again. You can use this option to
 download files on your computer away from home.
 `Read the documentation <https://docs.nekmo.org/telegram-upload/usage.html#telegram-download>`_ for more info.

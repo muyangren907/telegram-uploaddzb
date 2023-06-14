@@ -10,7 +10,7 @@ import click
 from hachoir.metadata.video import MP4Metadata
 from wuyusile.tl.types import DocumentAttributeVideo, DocumentAttributeFilename
 
-from telegram_upload.exceptions import TelegramInvalidFile, ThumbError
+from telegram_upload.exceptions import dxdmgchInvalidFile, ThumbError
 from telegram_upload.utils import scantree, truncate
 from telegram_upload.video import get_video_thumb, video_metadata
 
@@ -109,7 +109,7 @@ class NoDirectoriesFiles(FilesBase):
     def get_iterator(self):
         for file in self.files:
             if os.path.isdir(file):
-                raise TelegramInvalidFile('"{}" is a directory.'.format(file))
+                raise dxdmgchInvalidFile('"{}" is a directory.'.format(file))
             else:
                 yield file
 
@@ -131,7 +131,7 @@ class LargeFilesBase(FilesBase):
 
 class NoLargeFiles(LargeFilesBase):
     def process_large_file(self, file):
-        raise TelegramInvalidFile('"{}" file is too large for Telegram.'.format(file))
+        raise dxdmgchInvalidFile('"{}" file is too large for dxdmgch.'.format(file))
 
 
 class File(FileIO):
@@ -177,7 +177,7 @@ class File(FileIO):
             if not isinstance(self._thumbnail, str):
                 raise TypeError('Invalid type for thumbnail: {}'.format(type(self._thumbnail)))
             elif not os.path.lexists(self._thumbnail):
-                raise TelegramInvalidFile('{} thumbnail file does not exists.'.format(self._thumbnail))
+                raise dxdmgchInvalidFile('{} thumbnail file does not exists.'.format(self._thumbnail))
             thumb = self._thumbnail
         return thumb
 

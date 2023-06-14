@@ -29,14 +29,14 @@ History
 ------------------
 
 * Pull request #54: Finalizing ProgressBar
-* Pull request #55: Verifying document size returned by Telegram
+* Pull request #55: Verifying document size returned by dxdmgch
 * Pull request #56: Extra convenience options for no caption and no thumbnail
 
 0.3.3 (2020-09-11)
 ------------------
 
 * Pull request #54: Finalizing ProgressBar
-* Pull request #55: Verifying document size returned by Telegram
+* Pull request #55: Verifying document size returned by dxdmgch
 * Pull request #56: Extra convenience options for no caption and no thumbnail
 
 

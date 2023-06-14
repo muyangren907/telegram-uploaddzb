@@ -15,11 +15,11 @@ from wuyusile.tl.types import Message, DocumentAttributeFilename, InputMessagesF
 from wuyusile.utils import pack_bot_file_id
 
 from telegram_upload.config import SESSION_FILE
-from telegram_upload.exceptions import TelegramUploadDataLoss, TelegramUploadNoSpaceError, \
-    TelegramProxyError, MissingFileError, InvalidApiFileError
+from telegram_upload.exceptions import dxdmgchUploadDataLoss, dxdmgchUploadNoSpaceError, \
+    dxdmgchProxyError, MissingFileError, InvalidApiFileError
 from telegram_upload.files import File
 from wuyusile.version import __version__ as wuyusile_version
-from wuyusile import TelegramClient, utils
+from wuyusile import dxdmgchClient, utils
 
 from telegram_upload.utils import free_disk_usage, sizeof_fmt, grouper, async_to_sync
 
@@ -62,13 +62,13 @@ def parse_proxy_string(proxy: Union[str, None]):
         return None
     proxy_parsed = urlparse(proxy)
     if not proxy_parsed.scheme or not proxy_parsed.hostname or not proxy_parsed.port:
-        raise TelegramProxyError('Malformed proxy address: {}'.format(proxy))
+        raise dxdmgchProxyError('Malformed proxy address: {}'.format(proxy))
     if proxy_parsed.scheme == 'mtproxy':
         return ('mtproxy', proxy_parsed.hostname, proxy_parsed.port, proxy_parsed.username)
     try:
         import socks
     except ImportError:
-        raise TelegramProxyError('pysocks module is required for use HTTP/socks proxies. '
+        raise dxdmgchProxyError('pysocks module is required for use HTTP/socks proxies. '
                                  'Install it using: pip install pysocks')
     proxy_type = {
         'http': socks.HTTP,
@@ -76,12 +76,12 @@ def parse_proxy_string(proxy: Union[str, None]):
         'socks5': socks.SOCKS5,
     }.get(proxy_parsed.scheme)
     if proxy_type is None:
-        raise TelegramProxyError('Unsupported proxy type: {}'.format(proxy_parsed.scheme))
+        raise dxdmgchProxyError('Unsupported proxy type: {}'.format(proxy_parsed.scheme))
     return (proxy_type, proxy_parsed.hostname, proxy_parsed.port, True,
             proxy_parsed.username, proxy_parsed.password)
 
 
-class Client(TelegramClient):
+class Client(dxdmgchClient):
     def __init__(self, config_file, proxy=None, **kwargs):
         with open(config_file) as f:
             config = json.load(f)
@@ -141,7 +141,7 @@ class Client(TelegramClient):
                                  caption=file.file_caption, force_document=file.force_file,
                                  progress_callback=progress, attributes=file.file_attributes,supports_streaming=True)
         if hasattr(message.media, 'document') and file.file_size != message.media.document.size:
-            raise TelegramUploadDataLoss(
+            raise dxdmgchUploadDataLoss(
                 'Remote document size: {} bytes (local file size: {} bytes)'.format(
                     message.media.document.size, file.file_size))
         return message
@@ -229,7 +229,7 @@ class Client(TelegramClient):
                                         message.document.attributes), None)
             filename = filename_attr.file_name if filename_attr else 'Unknown'
             if message.document.size > free_disk_usage():
-                raise TelegramUploadNoSpaceError(
+                raise dxdmgchUploadNoSpaceError(
                     'There is no disk space to download "{}". Space required: {}'.format(
                         filename, sizeof_fmt(message.document.size - free_disk_usage())
                     )

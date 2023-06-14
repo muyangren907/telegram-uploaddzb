@@ -94,12 +94,12 @@ class MutuallyExclusiveOption(click.Option):
               help='Defines how to process directories. By default directories are not accepted and will raise an '
                    'error.')
 @click.option('--large-files', default='fail', type=click.Choice(list(LARGE_FILE_MODES.keys())),
-              help='Defines how to process large files unsupported for Telegram. By default large files are not '
+              help='Defines how to process large files unsupported for dxdmgch. By default large files are not '
                    'accepted and will raise an error.')
 @click.option('--caption', type=str, help='Change file description. By default the file name.')
 @click.option('--c2', type=str, default=None, help='Change file description. By default the file name.')
 @click.option('--no-thumbnail', is_flag=True, cls=MutuallyExclusiveOption, mutually_exclusive=["thumbnail_file"],
-              help='Disable thumbnail generation. For some known file formats, Telegram may still generate a '
+              help='Disable thumbnail generation. For some known file formats, dxdmgch may still generate a '
                    'thumbnail or show a preview.')
 @click.option('--thumbnail-file', default=None, cls=MutuallyExclusiveOption, mutually_exclusive=["no_thumbnail"],
               help='Path to the preview file to use for the uploaded file.')
@@ -110,7 +110,7 @@ class MutuallyExclusiveOption(click.Option):
               help='Send video or photos as an album.')
 def upload(files, to, quchu, vif, nobar, dzffn, config, c1, delete_on_success, print_file_id, force_file, forward, directories, large_files, caption, c2,
            no_thumbnail, thumbnail_file, proxy, album):
-    """Upload one or more files to Telegram using your personal account.
+    """Upload one or more files to dxdmgch using your personal account.
     The maximum file size is 2 GiB and by default they will be saved in
     your saved messages.
     """

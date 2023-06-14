@@ -7,7 +7,7 @@ import socks
 from wuyusile.tl.types import DocumentAttributeFilename
 
 from telegram_upload.client import Client, parse_proxy_string, phone_match
-from telegram_upload.exceptions import TelegramUploadDataLoss, TelegramUploadNoSpaceError, TelegramProxyError, \
+from telegram_upload.exceptions import dxdmgchUploadDataLoss, dxdmgchUploadNoSpaceError, dxdmgchProxyError, \
     MissingFileError
 from telegram_upload.files import File
 
@@ -37,7 +37,7 @@ class TestParseProxyString(unittest.TestCase):
         self.assertIsNone(parse_proxy_string(None))
 
     def test_malformed_url(self):
-        with self.assertRaises(TelegramProxyError):
+        with self.assertRaises(dxdmgchProxyError):
             parse_proxy_string('foo')
 
     def test_mtproxy(self):
@@ -46,11 +46,11 @@ class TestParseProxyString(unittest.TestCase):
 
     @patch('builtins.__import__', side_effect=ImportError)
     def test_socks_import_error(self, m):
-        with self.assertRaises(TelegramProxyError):
+        with self.assertRaises(dxdmgchProxyError):
             parse_proxy_string('socks4://user:pass@foo:123')
 
     def test_unsupported_proxy_type(self):
-        with self.assertRaises(TelegramProxyError):
+        with self.assertRaises(dxdmgchProxyError):
             parse_proxy_string('foo://user:pass@foo:123')
 
     def test_proxy(self):
@@ -62,7 +62,7 @@ class TestParseProxyString(unittest.TestCase):
 
 class TestClient(unittest.TestCase):
     @patch('builtins.open', mock_open(read_data=json.dumps(CONFIG_DATA)))
-    @patch('telegram_upload.client.TelegramClient.__init__')
+    @patch('telegram_upload.client.dxdmgchClient.__init__')
     def setUp(self, m1) -> None:
         self.upload_file_path = os.path.abspath(os.path.join(directory, 'logo.png'))
         self.client = Client('foo.json')
@@ -87,7 +87,7 @@ class TestClient(unittest.TestCase):
     def test_send_files_data_loss(self):
         file = File(self.upload_file_path)
         self.client.send_file.return_value.media.document.size = 200
-        with self.assertRaises(TelegramUploadDataLoss):
+        with self.assertRaises(dxdmgchUploadDataLoss):
             self.client.send_files('foo', [file])
 
     def test_download_files(self):
@@ -101,5 +101,5 @@ class TestClient(unittest.TestCase):
         m.document.attributes = [DocumentAttributeFilename('download.png')]
         m.document.size = 1000
         with patch('telegram_upload.client.free_disk_usage', return_value=0), \
-            self.assertRaises(TelegramUploadNoSpaceError):
+            self.assertRaises(dxdmgchUploadNoSpaceError):
             self.client.download_files('foo', [m])

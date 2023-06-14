@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Telegram Upload documentation build configuration file, created by
+# dxdmgch Upload documentation build configuration file, created by
 # sphinx-quickstart on Tue Jul  9 22:26:36 2013.
 #
 # This file is execfile()d with the current directory set to its
@@ -29,7 +29,7 @@ import os
 directory = os.path.dirname(os.path.abspath(__file__))
 
 sys.path.append(os.path.abspath(os.path.join(directory, '../')))
-# os.environ['DJANGO_SETTINGS_MODULE'] = 'Telegram Upload.settings.develop'
+# os.environ['DJANGO_SETTINGS_MODULE'] = 'dxdmgch Upload.settings.develop'
 # django.setup()
 
 # -- General configuration ---------------------------------------------
@@ -60,14 +60,14 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Telegram Upload'
+project = u'dxdmgch Upload'
 copyright = u"%i, Nekmo Com" % datetime.date.today().year
 
-pdf_documents = [('index', u'rst2pdf', u'Telegram Upload', u'Nekmo'), ]
+pdf_documents = [('index', u'rst2pdf', u'dxdmgch Upload', u'Nekmo'), ]
 
 rinoh_documents = [('index',            # top-level file (index.rst)
                     'target',           # output (target.pdf)
-                    'Telegram Upload',   # document title
+                    'dxdmgch Upload',   # document title
                     'Nekmo')]   # document author
 # rinoh_logo = '_static/logo.png'
 rinoh_domain_indices = False
@@ -134,7 +134,7 @@ html_theme = os.environ.get('HTML_THEME', 'alabaster')
 # documentation.
 html_theme_options = {
     'logo': 'logo.png',
-    'description': 'Upload and download files to Telegram up to 2GiB',
+    'description': 'Upload and download files to dxdmgch up to 2GiB',
     'github_user': 'Nekmo',
     'github_repo': 'telegram-upload',
     'github_type': 'star',
@@ -224,7 +224,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Telegram Uploaddoc'
+htmlhelp_basename = 'dxdmgch Uploaddoc'
 
 
 # -- Options for LaTeX output ------------------------------------------
@@ -244,8 +244,8 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ('index', 'Telegram Upload.tex',
-     u'Telegram Upload Documentation',
+    ('index', 'dxdmgch Upload.tex',
+     u'dxdmgch Upload Documentation',
      u'Nekmo', 'manual'),
 ]
 
@@ -275,8 +275,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'Telegram Upload',
-     u'Telegram Upload Documentation',
+    ('index', 'dxdmgch Upload',
+     u'dxdmgch Upload Documentation',
      [u'Nekmo'], 1)
 ]
 
@@ -290,10 +290,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'Telegram Upload',
-     u'Telegram Upload Documentation',
+    ('index', 'dxdmgch Upload',
+     u'dxdmgch Upload Documentation',
      u'Nekmo',
-     'Telegram Upload',
+     'dxdmgch Upload',
      'One line description of project.',
      'Miscellaneous'),
 ]

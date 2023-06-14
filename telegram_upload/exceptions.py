@@ -16,7 +16,7 @@ class ThumbVideoError(ThumbError):
     pass
 
 
-class TelegramUploadError(Exception):
+class dxdmgchUploadError(Exception):
     body = ''
     error_code = 1
 
@@ -32,29 +32,29 @@ class TelegramUploadError(Exception):
         return msg
 
 
-class MissingFileError(TelegramUploadError):
+class MissingFileError(dxdmgchUploadError):
     pass
 
 
-class InvalidApiFileError(TelegramUploadError):
+class InvalidApiFileError(dxdmgchUploadError):
     def __init__(self, config_file, extra_body=''):
         self.config_file = config_file
         super().__init__(extra_body)
 
 
-class TelegramInvalidFile(TelegramUploadError):
+class dxdmgchInvalidFile(dxdmgchUploadError):
     error_code = 3
 
 
-class TelegramUploadNoSpaceError(TelegramUploadError):
+class dxdmgchUploadNoSpaceError(dxdmgchUploadError):
     error_code = 28
 
 
-class TelegramUploadDataLoss(TelegramUploadError):
+class dxdmgchUploadDataLoss(dxdmgchUploadError):
     error_code = 29
 
 
-class TelegramProxyError(TelegramUploadError):
+class dxdmgchProxyError(dxdmgchUploadError):
     error_code = 30
 
 
@@ -66,7 +66,7 @@ def catch(fn):
             click.echo('The api_id/api_hash combination is invalid. Re-enter both values.')
             prompt_config(e.config_file)
             return catch(fn)(*args, **kwargs)
-        except TelegramUploadError as e:
+        except dxdmgchUploadError as e:
             sys.stderr.write('[Error] telegram-upload Exception:\n{}\n'.format(e))
             exit(e.error_code)
     return wrap

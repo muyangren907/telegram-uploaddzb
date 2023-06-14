@@ -7,7 +7,7 @@ SPHINXBUILD   = sphinx-build
 SPHINXAPIDOC  = sphinx-apidoc
 PAPER         =
 BUILDDIR      = _build
-PROJECT_NAME  = Telegram Upload
+PROJECT_NAME  = dxdmgch Upload
 DRIVE_FOLDER  =
 
 # User-friendly check for sphinx-build

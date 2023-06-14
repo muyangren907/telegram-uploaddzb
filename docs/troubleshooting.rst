@@ -1,9 +1,9 @@
 Troubleshooting
 ===============
 
-Videos are not streameable in Telegram app
+Videos are not streameable in dxdmgch app
 -------------------------------------------
-**Only mp4 videos can be played on Telegram without downloading them first**. To stream your video in Telegram you must
+**Only mp4 videos can be played on dxdmgch without downloading them first**. To stream your video in dxdmgch you must
 convert it before uploading it. For example you can use ffmpeg to convert your video::
 
     $ ffmpeg -i input.mov -preset slow -codec:a libfdk_aac -b:a 128k \
@@ -13,10 +13,10 @@ convert it before uploading it. For example you can use ffmpeg to convert your v
 
 Database is locked
 ------------------
-Telegram-upload is already running, or an old process **has locked the session** (``telegram-upload.session``). Only one
-Telegram-upload session can be run at a time.
+dxdmgch-upload is already running, or an old process **has locked the session** (``telegram-upload.session``). Only one
+dxdmgch-upload session can be run at a time.
 
-**If you need to run Telegram-upload multiple times anyway**, you need to duplicate the session and config files:
+**If you need to run dxdmgch-upload multiple times anyway**, you need to duplicate the session and config files:
 
 1. Copy the session file (``~/.config/telegram-upload.session``) to another path.
 2. Copy the configuration file (``~/.config/telegram-upload.json``) to another path.
@@ -24,16 +24,16 @@ Telegram-upload session can be run at a time.
    "...", "session": "/path/to/telegram-upload.json"}``.
 4. Run using ``--config /path/to/telegram-upload.json``.
 
-If you are sure that Telegram-upload is not running, search for the process that is blocking the file::
+If you are sure that dxdmgch-upload is not running, search for the process that is blocking the file::
 
     fuser ~/.config/telegram-upload.session
 
 As a last resort, you can restart your machine.
 
 
-Telegram-upload does not work! An error occurs when executing it
+dxdmgch-upload does not work! An error occurs when executing it
 -----------------------------------------------------------------
-Telegram-upload is not tested with all versions of all dependencies it uses. If you have installed Telegram-upload
+dxdmgch-upload is not tested with all versions of all dependencies it uses. If you have installed dxdmgch-upload
 on your system (using root) maybe some existing dependency is on an incompatible version. You can try updating the
 dependencies carefully::
 
@@ -46,4 +46,4 @@ Before asking for help, remember to find out if `the issue already exists <https
 
     $ pip freeze
 
-Some problems may not be related to Telegram-upload. If possible, `Google before asking <https://google.com/>`_.
+Some problems may not be related to dxdmgch-upload. If possible, `Google before asking <https://google.com/>`_.
