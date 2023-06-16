@@ -4,19 +4,19 @@ import subprocess
 import tempfile
 import os
 
-from zuikuihuoshou.xiaoxiexx import tiquxinxi
-from zuikuihuoshou.parser import createParser
-from zuikuihuoshou.core import config as zuikuihuoshou_config
+# from zuikuihuoshou.xiaoxiexx import tiquxinxi
+# from zuikuihuoshou.parser import createParser
+# from zuikuihuoshou.core import config as zuikuihuoshou_config
 
 from telegram_upload.exceptions import ThumbVideoError
 
 
-zuikuihuoshou_config.quiet = True
+# zuikuihuoshou_config.quiet = True
 
 
 def video_xiaoxiexx(file):
-    # return None
-    return tiquxinxi(createParser(file))
+    return None
+    # return tiquxinxi(createParser(file))
 
 
 def call_ffmpeg(dzffn, args):
