@@ -4,19 +4,19 @@ import subprocess
 import tempfile
 import os
 
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from hachoir.core import config as hachoir_config
+# from hachoir.metadata import extractMetadata
+# from hachoir.parser import createParser
+# from hachoir.core import config as hachoir_config
 
 from telegram_upload.exceptions import ThumbVideoError
 
 
-hachoir_config.quiet = True
+# hachoir_config.quiet = True
 
 
 def video_metadata(file):
-    # return None
-    return extractMetadata(createParser(file))
+    return -1
+    # return extractMetadata(createParser(file))
 
 
 def call_ffmpeg(dzffn, args):
@@ -51,7 +51,8 @@ def get_video_thumb(dzffn, file, output=None, size=200):
     # metadata = None
     if metadata is None:
         return
-    duration = metadata.get('duration').seconds if metadata.has('duration') else 0
+    # duration = metadata.get('duration').seconds if metadata.has('duration') else 0
+    duration = 0
     ratio = get_video_size(dzffn, file)
     if ratio is None:
         raise ThumbVideoError('Video ratio is not available.')
