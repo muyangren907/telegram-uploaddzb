@@ -11,12 +11,12 @@ class TestGetFileAttributes(unittest.TestCase):
     def test_not_video(self):
         self.assertEqual(get_file_attributes('foo.png'), [])
 
-    @patch('telegram_upload.files.video_xiaoxiexx')
-    def test_video(self, m_video_xiaoxiexx):
-        m_video_xiaoxiexx.return_value.has.return_value = True
+    @patch('telegram_upload.files.video_metadata')
+    def test_video(self, m_video_metadata):
+        m_video_metadata.return_value.has.return_value = True
         duration = Mock()
         duration.seconds = 1000
-        m_video_xiaoxiexx.return_value.get.side_effect = [
+        m_video_metadata.return_value.get.side_effect = [
             duration, 1920, 1080
         ]
         attrs = get_file_attributes('foo.mp4')

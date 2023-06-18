@@ -8,7 +8,7 @@ History
 * Issue #79: Python 3.9 support
 * Issue #74: Help on dependency issues
 * Issue #70: Document streamable file types
-* Issue #68: Silence zuikuihuoshou warnings ([warn] [/file[0]/uid] ...)
+* Issue #68: Silence hachoir warnings ([warn] [/file[0]/uid] ...)
 * Issue #65: Custom Thumbnail For the Files getting Uploaded
 * Issue #43: Write tests
 * Issue #40: Not using system HTTP Proxy
@@ -65,7 +65,7 @@ History
 0.2.1 (2019-07-30)
 ------------------
 
-* Issue #26: Installation Error - zuikuihuoshou3
+* Issue #26: Installation Error - hachoir3
 
 0.2.0 (2019-00-00)
 ------------------
