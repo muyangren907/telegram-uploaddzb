@@ -3,7 +3,8 @@ import re
 import subprocess
 import tempfile
 import os
-
+import logging
+__log__ = logging.getLogger(__name__)
 # from hachoir.metadata import extractMetadata
 # from hachoir.parser import createParser
 # from hachoir.core import config as hachoir_config
@@ -24,6 +25,7 @@ def call_ffmpeg(dzffn, args):
     try:
         return subprocess.Popen([get_ffmpeg_command(dzffn)] + args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     except FileNotFoundError:
+        __log__.info('{} command is not available. Thumbnails for videos are not available!'.format(dzffn))
         raise ThumbVideoError('{} command is not available. Thumbnails for videos are not available!'.format(dzffn))
 
 
