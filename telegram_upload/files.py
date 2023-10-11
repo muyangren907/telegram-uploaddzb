@@ -77,7 +77,7 @@ def get_file_attributes(file):
             # ))
             ratio = get_video_size('ffmpeg', file)
             duration_ = int(get_duration_from_cv2(file))
-            print("ratio:{}\tduration:{}".format(ratio,duration_))
+            # print("ratio:{}\tduration:{}".format(ratio,duration_))
             attrs.append(DocumentAttributeVideo(
                 (0, duration_)[duration_!=-1],
                 ratio[0],
