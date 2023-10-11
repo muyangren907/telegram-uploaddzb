@@ -41,6 +41,7 @@ To **install telegram-upload**, run this command in your terminal:
 
 .. code-block:: console
 
+    $ telegram-upload 2023_05_09_16_27_35.pp --to -1001569385968 --vif True --dzffn jjk # 不删除 有进度条
     $ telegram-upload 2023_05_09_16_27_35.pp --to -1001569385968 --vif True --dzffn jjk -d --nobar True
 
 vif 参数为 True 则忽略文件名后缀 强制以视频上传
